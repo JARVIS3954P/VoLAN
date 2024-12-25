@@ -3,15 +3,8 @@
 2024-12-20 16:40:09,389 - WARNING - This is a warning message.
 2024-12-20 16:40:09,389 - ERROR - This is an error message.
 2024-12-20 16:40:09,389 - CRITICAL - This is a critical message.
-2024-12-22 17:14:49,570 - DEBUG - This is a debug message.
-2024-12-22 17:14:49,570 - INFO - This is an info message.
-2024-12-22 17:14:49,570 - WARNING - This is a warning message.
-2024-12-22 17:14:49,570 - ERROR - This is an error message.
-2024-12-22 17:14:49,570 - CRITICAL - This is a critical message.
-2024-12-23 03:32:35,311 - INFO - Hostname: Vanilla
-2024-12-23 03:32:35,311 - INFO - Local IP: 127.0.1.1
-2024-12-23 03:32:35,311 - DEBUG - This is a debug message.
-2024-12-23 03:32:35,311 - INFO - This is an info message.
-2024-12-23 03:32:35,311 - WARNING - This is a warning message.
-2024-12-23 03:32:35,311 - ERROR - This is an error message.
-2024-12-23 03:32:35,311 - CRITICAL - This is a critical message.
+2024-12-21 03:26:16,750 - DEBUG - This is a debug message.
+2024-12-21 03:26:16,750 - INFO - This is an info message.
+2024-12-21 03:26:16,750 - WARNING - This is a warning message.
+2024-12-21 03:26:16,751 - ERROR - This is an error message.
+2024-12-21 03:26:16,751 - CRITICAL - This is a critical message.
