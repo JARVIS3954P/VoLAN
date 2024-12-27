@@ -1,2 +1,4 @@
 app/core/__pycache__
-app/logs/logs/app.log
+app/logs/app.log
+.idea
+

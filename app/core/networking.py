@@ -25,20 +25,24 @@ def run_server():   #Creates a TCP configured PTP server for incomming connectio
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((ip,port))
     server.listen(0)
-    print(f"Listening on port: {port}")
+    print(f"TCP Listening on port: {port}")
     client, client_add = server.accept()
-    while True:
-        request = client.recv(1024)
-        request = request.decode("utf-8")
-        if request.lower() == 'close':
-            client.send('closed'.encode("utf-8"))
-            break
-        print(f"CLIENT: {request}")
-        client.send(f"Recived({request})".encode('utf-8'))
+    
+    udp_server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    udp_server.bind((ip,0))
+    udp_port = udp_server.getsockname()[1]
+    
+    client.send(str(udp_port).encode('utf-8'))
     client.close()
     server.close()
-    print("Connection closed")
-
+    print("TCP Connection closed")
+    while True:
+        data, addr = udp_server.recvfrom(1024)
+        if(data.decode('utf-8').lower() == "close"):
+            udp_server.close()
+            print("UDP SERVER CLOSED!!!!")
+            break
+        print(f"Recived: {data.decode('utf-8')}")
 
 def ping_ip(ip): #Pings the said IP address
     param = "-n" if platform.system().lower() == "windows" else "-c" 
@@ -52,7 +56,6 @@ def scan_devices(base_ip):  #Returns the Devics avalable on the network(pingable
     ips = [f"{base_ip}.{i}" for i in range(1,255)]
     with ThreadPoolExecutor(max_workers=50) as executor:
         results = list(executor.map(ping_ip,ips))
-
     avalable_devices = [ip for ip in results if ip]
     print("Found Devices: ")
     for count, device in enumerate(avalable_devices, 1):
@@ -75,13 +78,10 @@ def run_client():       # Runs Client for the created TCP configured PTP server
     server_port = 8000
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client.connect((server_add,server_port))
-    while True:
-        msg = input("Enter the msg for server: ")
-        client.send(msg.encode("utf-8"))
-        response = client.recv(1024)
-        response = response.decode("utf-8")
-        if response.lower() == "closed":
-            break
-        print(f"SERVER: {response}")
+    udp_server_port = client.recv(1024).decode('utf-8')
     client.close()
-    print("Connection Closed")
+    print("TCP Connection Closed")
+    client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    while True:
+        msg = input("Enter the message for the server: ")
+        client.sendto(msg.encode('utf-8'),(server_add,int(udp_server_port)))
