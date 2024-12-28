@@ -38,8 +38,8 @@ def run_server():   #Creates a TCP configured PTP server for incomming connectio
     print("TCP Connection closed")
     while True:
         data, addr = udp_server.recvfrom(1024)
-        if(data.decode('utf-8').lower() == "close"):
-            udp_server.close()
+        if(data.decode('utf-8').lower() == "close"): 
+            udp_server.close() 
             print("UDP SERVER CLOSED!!!!")
             break
         print(f"Recived: {data.decode('utf-8')}")
@@ -84,4 +84,7 @@ def run_client():       # Runs Client for the created TCP configured PTP server
     client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     while True:
         msg = input("Enter the message for the server: ")
+        if msg == "close":
+            client.close()
+            break
         client.sendto(msg.encode('utf-8'),(server_add,int(udp_server_port)))
