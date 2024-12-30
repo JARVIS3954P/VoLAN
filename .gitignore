@@ -1,4 +1,5 @@
 app/core/__pycache__
+app/core/logs/app.log
 app/logs/app.log
 .idea
 
