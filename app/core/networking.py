@@ -46,7 +46,7 @@ def ping_ip(ip): #Pings the said IP address
     response = os.system(command)
     return ip if response == 0 else None
 
-def scan_devices(base_ip):  #Returns the Devics avalable on the network(pingable devices)
+def scan_devices(base_ip):  #Returns the Devices avalable on the network(pingable devices)
     print("Scanning for devices.....")
     avalable_devices = []
     ips = [f"{base_ip}.{i}" for i in range(1,255)]
