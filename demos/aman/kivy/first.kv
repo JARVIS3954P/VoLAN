@@ -1,26 +1,67 @@
-box_layout_example:
+Stack_layout_example:
 
-<box_layout_example>:
+<Stack_layout_example>:
+    Button:
+        text: "A"
+        size_hint: None,None
+    Button:
+        text: "B"
+        size_hint: None,None
+    Button:
+        text: "C"
+        size_hint: None,None
+
+<Box_layout_example@BoxLayout>:
     orientation: "vertical"
     Button:
         text: "A"
-        size_hint: .5,.5
-        #x, center_x, right
-        #y, center_y, top
+        size_hint: .5, .5
         pos_hint: {"center_x": .5}
     Button:
         text: "B"
     Button:
         text: "C"
 
+<grid_layout_example@GridLayout>:
+    rows: 2
+    cols: 4
+    Button:
+        text: "A"
+        size_hint: None, .2
+    Box_layout_example:
+    Button:
+        text: "C"
+    Button:
+        text: "D"
+    Button:
+        text: "A"
+        size_hint: None, .2
+    Button:
+        text: "A"
+    Button:
+        text: "A"
+
+<anchor_layout_example>:
+    # left, right, center
+    anchor_x: "center"
+    # top, bottom, center
+    anchor_y: "top"
+    Button:
+        text: "A"
+        size_hint: None, None
+        size: "32dp", "32dp"
+    Button:
+        text: "B"
+        size_hint: .1, None
+
 <first_widget>:
     Button:
-        text:"Hello"
+        text: "Hello"
         size: "100dp", "80dp"
-        pos: "100dp","200dp"
-        color: 1,.3,.3,1
+        pos: "100dp", "200dp"
+        color: 1, .3, .3, 1
     Label:
         text: "Second Button"
         size: "100dp", "80dp"
         pos: "100dp", "50dp"
-        color: 0,1,0,1
+        color: 0, 1, 0, 1
