@@ -10,21 +10,31 @@ Usage is as follows....
 
 This script will also work on two different devices in the same local network if they both run this same python script
 '''
-
 import logging
 import os
 import core.networking as nt
 import kivy
+from kivy.config import Config
+from kivy.metrics import dp
+from kivy.uix.boxlayout import BoxLayout
+
+dp_width = 1000
+dp_height = 600
+
+width = int(dp(dp_width))
+height = int(dp(dp_height))
+
+Config.set("graphics","width",str(width))
+Config.set("graphics","height",str(height))
+Config.set("graphics","resizable","0")
+Config.write()
+
+kivy.require('1.11.1')
 from kivy.app import App
 from kivy.uix.label import Label
 
-kivy.require('1.11.1')
-
-class MyFirstKivyAPP(App):
-    def build(self):
-        lbl = Label(text="Hello World")
-        return lbl
-
+class voipApp(App):
+    pass
 
 os.makedirs("logs", exist_ok=True)
 logging.basicConfig(
@@ -36,8 +46,9 @@ logging.basicConfig(
     ]
 )
 
+
 if __name__ == "__main__":
-    app = MyFirstKivyAPP()
+    app = voipApp()
     app.run()
 
     #print("READ THE PYTHON FILE FIRST BEFORE USING!!!")
