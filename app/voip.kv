@@ -1,10 +1,103 @@
-Box_layout:
+MainLayout:
 
-<Box_layout@BoxLayout>:
-    Button:
-        text: "Menu"
-        size_hint: ".4dp",None 
-    Button:
-        text: "Chat"
-        size_hint: "1dp","1dp"
+<MainLayout@BoxLayout>:
+    orientation: "horizontal"  # Split the screen horizontally
+    LeftPanel:
+        size_hint: (0.3, 1)  # 30% width for the left panel
+    RightPanel:
+        size_hint: (0.7, 1)  # 70% width for the chat area
 
+<LeftPanel@BoxLayout>:
+    orientation: "vertical"
+    ScrollView:
+        do_scroll_x: False  # Only scroll vertically
+        do_scroll_y: True
+        GridLayout:
+            cols: 1  # Single column for vertical stacking
+            size_hint_y: None
+            height: self.minimum_height  # Dynamically adjust height to content
+            spacing: "10dp"  # Optional spacing
+            padding: "10dp"  # Optional padding
+            # Add a list of people (buttons as placeholders)
+            Button:
+                text: "Person 1"
+                size_hint_y: None
+                height: "50dp"
+            Button:
+                text: "Person 2"
+                size_hint_y: None
+                height: "50dp"
+            Button:
+                text: "Person 3"
+                size_hint_y: None
+                height: "50dp"
+            Button:
+                text: "Person 4"
+                size_hint_y: None
+                height: "50dp"
+            Button:
+                text: "Person 5"
+                size_hint_y: None
+                height: "50dp"
+            Button:
+                text: "Person 6"
+                size_hint_y: None
+                height: "50dp"
+            Button:
+                text: "Person 6"
+                size_hint_y: None
+                height: "50dp"
+            Button:
+                text: "Person 6"
+                size_hint_y: None
+                height: "50dp"
+            Button:
+                text: "Person 6"
+                size_hint_y: None
+                height: "50dp"
+            Button:
+                text: "Person 6"
+                size_hint_y: None
+                height: "50dp"
+            Button:
+                text: "Person 6"
+                size_hint_y: None
+                height: "50dp"
+            Button:
+                text: "Person 6"
+                size_hint_y: None
+                height: "50dp"
+
+
+<RightPanel@BoxLayout>:
+    orientation: "vertical"
+    Label:
+        text: "Chat Area"
+        size_hint_y: None
+        height: "50dp"  # Header height
+        font_size: "20sp"
+        bold: True
+        halign: "center"
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            height: self.minimum_height
+            spacing: "10dp"
+            # Chat content (Labels as placeholders for messages)
+            Label:
+                text: "Hello, how are you?"
+                size_hint_y: None
+                height: "40dp"
+                halign: "left"
+            Label:
+                text: "I'm good! How about you?"
+                size_hint_y: None
+                height: "40dp"
+                halign: "right"
+    TextInput:
+        hint_text: "Type a message..."
+        size_hint_y: None
+        height: "50dp"
